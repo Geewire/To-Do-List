@@ -1,10 +1,9 @@
-const ul = document.querySelector('#ToDoTask');
+const ul = document.getElementById('ToDoTask');
 const input = document.getElementById('createNew');
-let itemsArray = localStorage.getItem('items') ?
-JSON.parse(localStorage.getItem('items')) : [];
+let itemsArray = localStorage.getItem('createNew') ?
+JSON.parse(localStorage.getItem('createNew')) : [];
 
 itemsArray.forEach(addTask);
-console.log(addTask)
 function addTask(text){
   const li = document.createElement('li')
   let done= document.createElement('button')
@@ -22,30 +21,20 @@ function addTask(text){
 
 document.querySelector('#button').onclick = function add(){
   itemsArray.push(input.value);
-  console.log(itemsArray)
   localStorage.setItem('items', JSON.stringify(itemsArray));
   addTask(input.value);
   input.value = '';
 }
 
-// let deleteTask=document.querySelectorAll(".delete");
-// for(let i=0; i<deleteTask.length; i++){
-//       deleteTask[i].onclick= function del(){
-//         console.log('nope')
-//         this.parentNode.remove();
-//        }
-//   }
-
-  const deleteItem = (index)=>{
-    let item = itemsArray[index];
-    if(item != undefined){
-        itemsArray.splice(index, 1);
-        localStorage.itemsArray = JSON.stringify(itemsArray);
-        renderList();
-    }else{
-        alert("Item has already been deleted.");
-    }
-}
+let deleteTask=document.querySelectorAll(".delete");
+for(let i=0; i<deleteTask.length; i++){
+      deleteTask[i].onclick= function del(){
+        console.log('nope')
+      //  localStorage.clear();
+      //  ul.innerHTML = '';
+      //  itemsArray = [];
+       }
+  }
 
   
 //}; 
