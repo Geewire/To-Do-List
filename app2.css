@@ -38,6 +38,16 @@ body{
 
 }
 
+.done{
+    border: none;
+    background-color: white;
+    padding: 2px;
+    float: right;
+    right: inherit;
+    margin-right: 2%;  
+    
+    
+}
 .delete{
     background-color: rgb(189, 17, 17);
     color: #f0ffff;
@@ -51,19 +61,7 @@ body{
     
 }
 
-.update{
-    border: none;
-    background-color: white;
-    padding: 2px;
-    float: right;
-    right: inherit;
-    margin-right: 2%;  
-    
 
-    
-    
-    
-}
 
 p{
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;

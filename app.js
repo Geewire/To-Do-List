@@ -6,8 +6,8 @@ document.querySelector('#button').onclick = function(){
     let display = document.createElement('li')
     display.innerHTML +=`
     ${document.querySelector('#createTask input').value}
-    <button class="update">Done</button>
     <button class="delete">x</button>
+    <button class="update">Done</button>
     `
 
     document.getElementById('ToDoTask').append(display)

@@ -1,21 +1,22 @@
 const ul = document.querySelector('#ToDoTask');
+const ulDone= document.querySelector('#Done')
 const input = document.getElementById('createNew');
+const inputDone =  document.getElementById('Done');
 let itemsArray = localStorage.getItem('items') ?
 JSON.parse(localStorage.getItem('items')) : [];
 
 itemsArray.forEach(addTask);
-console.log(addTask)
 function addTask(text){
   const li = document.createElement('li')
   let done= document.createElement('button')
   done.textContent='Done'
   done.className="done"
   let deleteTask= document.createElement('button')
-  deleteTask.textContent= 'X'
+  deleteTask.textContent= 'Delete'
   deleteTask.className="delete"
   li.textContent = text;
-  li.append(done);
   li.append(deleteTask);
+  li.append(done);
   ul.append(li);
   
 }
@@ -28,25 +29,43 @@ document.querySelector('#button').onclick = function add(){
   input.value = '';
 }
 
-// let deleteTask=document.querySelectorAll(".delete");
-// for(let i=0; i<deleteTask.length; i++){
-//       deleteTask[i].onclick= function del(){
-//         console.log('nope')
-//         this.parentNode.remove();
-//        }
-//   }
+let deleteTask=document.querySelectorAll(".delete");
+for(let i=0; i<deleteTask.length; i++){
+      deleteTask[i].onclick= function del(ind){
+        this.parentNode.remove();
+        let todo = localStorage.getItem("items");
+        todoArray = JSON.parse(todo);
+        todoArray.splice(ind, 1);
+       localStorage.setItem("items", JSON.stringify(todoArray));
+       addTask(text);
+       }
+  }
 
-  const deleteItem = (index)=>{
-    let item = itemsArray[index];
-    if(item != undefined){
-        itemsArray.splice(index, 1);
-        localStorage.itemsArray = JSON.stringify(itemsArray);
-        renderList();
-    }else{
-        alert("Item has already been deleted.");
+  let doneTask=document.querySelectorAll(".done");
+  for(let i=0; i<doneTask.length; i++){
+        doneTask[i].onclick= function doneTaskF(ind){
+          console.log('yes')
+          let addDone= this.parentNode;
+          addDone.class="li"
+          doneTask[i].style.backgroundColor=  'rgb(100, 156, 100)'
+          document.getElementById('Done').append(addDone)
+          let todo = localStorage.getItem("items");
+          todoArray = itemsArray;
+           todoArray.splice(ind, 1);
+           localStorage.setItem("items", JSON.stringify(todoArray));
+           addTask(text);
+            
+        }  
     }
-}
 
+
+  // function deleteTodo(ind) {
+  //   let todo = localStorage.getItem("items");
+  //   todoArray = JSON.parse(todo);
+  //   todoArray.splice(ind, 1);
+  //   localStorage.setItem("items", JSON.stringify(todoArray));
+  //   displayTodo();
+  //  }
   
 //}; 
 //  for(let i=0; i<deleteTask.length; i++){
